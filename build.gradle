@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+group 'com.github.freewu32'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+mainClassName = 'com.github.freewu32.PicoApplication'
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+
+    mavenCentral()
+}
+
+javafx {
+    version = '11'
+    modules = [ 'javafx.graphics']
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    //字节数组操作库
+    compile group: 'io.netty', name: 'netty-buffer', version: '4.1.50.Final'
+    //lua脚本解释器
+    compile group: 'org.luaj', name: 'luaj-jse', version: '3.0.1'
+    //单元测试
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version:'1.6.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.6.2'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
