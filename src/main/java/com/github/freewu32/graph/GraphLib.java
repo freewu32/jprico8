@@ -1,5 +1,6 @@
 package com.github.freewu32.graph;
 
+import javafx.scene.canvas.Canvas;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.LibFunction;
 import org.luaj.vm2.lib.TwoArgFunction;
@@ -8,6 +9,12 @@ import org.luaj.vm2.lib.TwoArgFunction;
  * 绘图api模块
  */
 public class GraphLib extends TwoArgFunction {
+
+    private Canvas canvas;
+
+    public GraphLib(Canvas canvas) {
+        this.canvas = canvas;
+    }
 
     private final LuaValue camera = new TwoArgFunction() {
         @Override
