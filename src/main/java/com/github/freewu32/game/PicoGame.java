@@ -8,6 +8,7 @@ import com.github.freewu32.rom.RomLoader;
 import javafx.scene.canvas.Canvas;
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LoadState;
+import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.ast.Str;
 import org.luaj.vm2.compiler.LuaC;
 
@@ -46,6 +47,9 @@ public class PicoGame {
      * 加载游戏rom
      */
     private void loadRom(PicoRom rom) {
+        //执行全局逻辑
         luaVm.load(rom.getLua()).call();
+        //执行初始化逻辑
+        luaVm.invokemethod("_init");
     }
 }
