@@ -22,14 +22,11 @@ public class PicoGame {
 
     private Globals luaVm;
 
-    private Canvas canvas;
-
     private RomLoader romLoader;
 
     public PicoGame(Canvas canvas) {
-        this.canvas = canvas;
         luaVm = new Globals();
-        luaVm.load(new GraphLib(this.canvas));
+        luaVm.load(new GraphLib(canvas));
         luaVm.load(new MusicLib());
         LoadState.install(luaVm);
         LuaC.install(luaVm);
