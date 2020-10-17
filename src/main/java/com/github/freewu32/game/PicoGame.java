@@ -1,6 +1,7 @@
 package com.github.freewu32.game;
 
 import com.github.freewu32.graph.GraphLib;
+import com.github.freewu32.music.MusicLib;
 import com.github.freewu32.rom.PicoRom;
 import com.github.freewu32.rom.PngRomLoader;
 import com.github.freewu32.rom.RomLoader;
@@ -29,6 +30,7 @@ public class PicoGame {
         this.canvas = canvas;
         luaVm = new Globals();
         luaVm.load(new GraphLib(this.canvas));
+        luaVm.load(new MusicLib());
         LoadState.install(luaVm);
         LuaC.install(luaVm);
         this.romLoader = new PngRomLoader();
